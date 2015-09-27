@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"ng-app="mainApp" >
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS - Dependency Injdection</title>
+    <script src="../bower_components/angularjs/angular.min.js"></script>
+</head>
+<body>
+<div>
+    <h1>AngularJS Expression</h1>
+    <a href="//docs.angularjs.org/guide/di">AngularJS Dependency Injection developer guides</a>
+</div>
+<div ng-controller="MainController">
+
+</div>
+<script>
+    var mainApp = angular.module("mainApp", []);
+
+    mainApp.controller("MainController", ["$scope", function(scope) {
+
+    }]);
+    //declare value
+    mainApp.value("defaultPort", "8080");
+    mainApp.constant("defaultURL", "www.defaulturl.com");
+    //factory
+    mainApp.factory("MathFactory", function() {
+        return {
+            multiply: function(a, b) {
+                return a * b;
+            }
+        }
+    });
+
+    mainApp.service("MathService", function() {
+        this.multiply = function(a, b) {
+            return a * b;
+        }
+    });
+
+    mainApp.provider("MathProvider", function() {
+        this.valueShouldBeChangedInConfig = "test";
+        this.$get = function() {
+            var factory = {};
+            factory.multiply = function(a, b) {
+               return a * b;
+            }
+            return factory;
+        }
+    });
+
+    mainApp.config(["$MathProvider", function(MathProvider) {
+        MathProvider.valueShouldBeChangedInConfig = "changed";
+    }]);
+</script>
+</body>
+</html>

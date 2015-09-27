@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"ng-app="mainApp" >
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS - Filter</title>
+    <script src="../bower_components/angularjs/angular.min.js"></script>
+</head>
+<body>
+<div>
+    <h1>AngularJS Filter</h1>
+    <a href="//docs.angularjs.org/guide/filter">AngularJS Filters developer guides</a>
+    <a href="//docs.angularjs.org/api/ng/filter">AngularJS build-in Filters</a>
+</div>
+<div ng-controller="MainController">
+    <input type="number" ng-model="amount" aria-label="amount"> <br>
+    <p>Default currency symbol ($): <span id="currency-default">{{amount | currency}}</span></p>
+    <p>Custom currency identifier (USD$): <span id="currency-custom">{{amount | currency:"USD$"}}</span></p>
+    <p>No fractions (0): <span id="currency-no-fractions">{{amount | currency:"USD$":0}}</span></p>
+    <div>
+        <p>Message: {{message | uppercase | capitalize}}</p>
+    </div>
+</div>
+
+<script>
+    var mainApp = angular.module("mainApp", []);
+    mainApp.controller("MainController", ["$scope", function(scope) {
+        scope.amount = 1234.56;
+        scope.message = "This message is placed in MainController";
+    }]);
+
+    // custom filter
+    mainApp.filter("capitalize", function() {
+        return function(str) {
+            return str.replace(/\w\S*/g, function(txt){
+                return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            });
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "angularjs-stepbystep",
+  "version": "1.0.0",
+  "homepage": "https://github.com/dothanhlam/angularjs-stepbystep",
+  "authors": [
+    "Lam Do <dothanhlam@gmail.com>"
+  ],
+  "description": "angularjs step by step",
+  "license": "no license",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angularjs": "~1.4.6"
+  }
+}

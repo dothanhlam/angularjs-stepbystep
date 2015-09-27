@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mainApp">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS step by step</title>
+    <script src="bower_components/angularjs/angular.min.js"></script>
+</head>
+<body>
+<div ng-controller="HelloController">{{message}}</div>
+    <script>
+        // declare main application module
+        var mainApp = angular.module("mainApp", []);
+        mainApp.controller("HelloController", function($scope) {
+            $scope.message = "HelloWorld";
+        });
+    </script>
+    <ul>
+        <li><a href="features/directive.html">Directive</a></li>
+        <li><a href="features/expression.html">Expression</a></li>
+        <li><a href="features/filter.html">Filter</a></li>
+        <li><a href="features/template.html">Template</a></li>
+        <li><a href="features/module.html">Module</a></li>
+        <li><a href="features/dependency-injection.html">Dependency Injection</a></li>
+    </ul>
+</body>
+</html>
+

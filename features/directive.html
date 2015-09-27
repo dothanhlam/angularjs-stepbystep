@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"ng-app="mainApp" >
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS - Directive</title>
+    <script src="../bower_components/angularjs/angular.min.js"></script>
+</head>
+<body>
+    <div>
+        <h1>AngularJS Directive</h1>
+        <a href="//docs.angularjs.org/guide/directive">AngularJS Directive developer guides</a>
+        <a href="//docs.angularjs.org/api/ng/directive">AngularJS Directive API documents</a>
+        <p></p>
+    </div>
+
+    <div ng-controller="MainController">
+        <div>
+            <h2>Using ng-src</h2>
+            <img ng-src="//www.gravatar.com/avatar/{{hash}}" alt="Description" />
+        </div>
+        <div>
+            <h2>Using ng-repeat</h2>
+            <ul>
+                <li ng-repeat="fruit in fruits">{{fruit}}</li>
+            </ul>
+        </div>
+        <div>
+            <h2>Using ng-bind</h2>
+            <input ng-model="myValue" />
+            <p ng-bind="myValue"></p>
+            <p>{{myValue}}</p>
+        </div>
+    </div>
+
+    <script>
+        var mainApp = angular.module("mainApp", []);
+        mainApp.controller("MainController", ["$scope", function(scope) {
+            scope.hash = "94d093eda664addd6e450d7e9881bcad?s=32&d=identicon&r=PG";
+            scope.fruits = ["Apple", "Banana", "Grape", "Orange", "Kiwi"];
+            scope.myValue = "this is default"
+        }]);
+
+        mainApp.directive("appVersion", function() {
+            return {
+                scope: false,
+                template: "version 1.0"
+            }
+        });
+    </script>
+
+</body>
+</html>

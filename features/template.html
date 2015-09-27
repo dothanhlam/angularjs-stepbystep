@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"ng-app="mainApp" >
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS - Template</title>
+    <script src="../bower_components/angularjs/angular.min.js"></script>
+    <link href="../resources/app.css" rel="stylesheet" />
+
+</head>
+<body>
+<div>
+    <h1>AngularJS Expression</h1>
+    <a href="//docs.angularjs.org/guide/templates">AngularJS Templates developer guides</a>
+</div>
+
+
+<div ng-controller="MainController">
+    <div>
+        <h2>Using expression</h2>
+        <p ng-repeat="person in persons"> {{person.first}}, {{person.middle}} {{person.last}}</p>
+    </div>
+    <div>
+        <h2>Using static template</h2>
+        <p ng-repeat="person in persons" ng-include="'person.html'"> </p>
+    </div>
+    <div>
+        <h2>Using dynamic template</h2>
+        <p ng-repeat="person in persons" ng-include="'partial/person2.html'"> </p>
+    </div>
+</div>
+
+<script type="text/ng-template" id="person.html">
+    {{person.last}}, {{person.first}} {{person.middle}}
+</script>
+
+<script>
+    var mainApp = angular.module("mainApp", []);
+    mainApp.controller("MainController", ["$scope", function(scope) {
+        scope.persons = [
+            { first: "Henry", middle: "Jacob", last: "Mendocino", gender: "M" },
+            { first: "Ann", middle: "Cecilia", last: "Negro", gender: "F" },
+            { first: "Berta", middle: "Ann", last: "Sallyfield", gender: "F" },
+            { first: "Rudolf", middle: "John", last: "Waters", gender: "M" },
+            { first: "Ken", middle: "Adam", last: "Aundry", gender: "M" },
+        ];
+    }]);
+</script>
+</body>
+</html>

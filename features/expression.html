@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"ng-app="mainApp" >
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS - Expression</title>
+    <script src="../bower_components/angularjs/angular.min.js"></script>
+</head>
+<body>
+<div>
+    <h1>AngularJS Expression</h1>
+    <a href="//docs.angularjs.org/guide/expression">AngularJS Expressions developer guides</a>
+</div>
+<div ng-controller="MainController">
+    <ul>
+        <li><span>1 + 1 = {{1 + 1}}</span> // as numbers</li>
+        <li><span>a + b = {{'a' + 'b'}}</span> // as string</li>
+        <li><span>{{fruits[0]}}</span>// as array</li>
+        <li><span>{{basket.buyer}}</span></li>
+    </ul>
+</div>
+<script>
+    var mainApp = angular.module("mainApp", []);
+    mainApp.controller("MainController", ["$scope", function(scope) {
+        scope.fruits = ["Apple", "Banana", "Grape", "Orange", "Kiwi"];
+        scope.basket = {id: 0, buyer: "Angelina Phuong Trinh", items: ["Apple", "Banana", "Apple", "Kiwi"]};
+    }]);
+</script>
+</body>
+</html>
